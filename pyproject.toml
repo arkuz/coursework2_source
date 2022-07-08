@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "skypro_coursework_2"
+version = "0.1.0"
+description = ""
+authors = ["Artem Kuzmenko"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+Flask = "^2.1.2"
+
+[tool.poetry.dev-dependencies]
+pyproject-flake8 = "^0.0.1-alpha.4"
+pytest = "^7.1.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.flake8]
+max-line-length = 120
+exclude = [
+    "templates",
+    ".venv",
+    ".env",
+    "venv",
+    "env",
+]
