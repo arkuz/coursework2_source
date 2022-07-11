@@ -10,6 +10,7 @@ skyprogram_blueprint = Blueprint('skyprogram_blueprint', __name__, template_fold
 @skyprogram_blueprint.route('/')
 def index_page():
     posts = utils.get_posts_all()
+    logger.info('Обращение к "/"')
     return render_template('index.html', posts=posts)
 
 
@@ -22,6 +23,7 @@ def post_page(pk):
         logger.error(e)
         title = const.ERROR_500['code']
         return render_template('error_page.html', title=title, text=e), const.ERROR_500['text']
+    logger.info(f'Обращение к "/post/{pk}/"')
     return render_template('post.html', post=post, comments=comments)
 
 
@@ -44,6 +46,7 @@ def user_page(username):
         logger.error(e)
         title = const.ERROR_500['code']
         return render_template('error_page.html', title=title, text=e), const.ERROR_500['text']
+    logger.info(f'Обращение к "/users/{username}/"')
     return render_template('user-feed.html', posts=posts)
 
 
@@ -64,6 +67,7 @@ def error_page_500(e):
 @skyprogram_blueprint.route('/api/posts/')
 def api_posts():
     posts = utils.get_posts_all()
+    logger.info('Обращение к "/api/posts/"')
     return jsonify(posts)
 
 
@@ -77,5 +81,6 @@ def api_post(pk):
         return jsonify({'type': 'error',
                         'code': const.ERROR_500['code'],
                         'message': str(e)})
+    logger.info(f'Обращение к "/api/post/{pk}/"')
     return jsonify({'post': post,
                     'comments': comments})
