@@ -15,4 +15,4 @@ app.config['JSON_AS_ASCII'] = False
 app.register_blueprint(skyprogram_blueprint)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
