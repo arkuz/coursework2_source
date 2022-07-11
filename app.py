@@ -10,6 +10,7 @@ logging.basicConfig(filename="log/log.log",
 logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
+app.config['JSON_AS_ASCII'] = False
 
 app.register_blueprint(skyprogram_blueprint)
 
