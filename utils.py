@@ -55,6 +55,8 @@ def get_comments_by_post_id(comments: list[dict], post_id: int) -> list[dict]:
 def search_for_posts(posts: list[dict], query: str) -> list[dict]:
     """ Получить посты содержащие query """
     query_posts = []
+    if not query:
+        return query_posts
     for post in posts:
         if query.lower() in post["content"].lower():
             query_posts.append(post)
